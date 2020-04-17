@@ -1,0 +1,256 @@
+﻿html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, d article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video  {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font: inherit;
+    border: 0;
+    vertical-align: baseline;
+}
+
+* {
+    min-height: 1px;
+    min-width: 1px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Cantarell');
+
+body {
+    line-height: 1.3;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Cantarell', sans-serif;
+    color: $steel;
+    font-size: 16px;
+}
+
+._site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $denim;
+    height: 4rem;
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(space-between);
+
+    ._site-header-left {
+        margin-left: 2rem;
+    }
+
+    ._site-header-right {
+        height: 100%;
+    }
+
+    ._user-profile {
+        color: #fff;
+        @include display(flex);
+        @include align-items(center);
+        height: 100%;
+        padding-left: .5rem;
+        padding-right: 2rem;
+        position: relative;
+
+        ._user-profile-actions {
+            position: absolute;
+            top: 100%;
+            left: -1px;
+            right: 0;
+            background-color: #fff;
+            border-left: 1px solid $steel;
+            border-bottom: 1px solid $steel;
+            @include border-bottom-radius();
+            @include border-right-radius(0);
+
+            li {
+                padding: .5rem;
+            }
+        }
+
+        img {
+            height: 60%;
+            padding-right: .25rem;
+            @include border-radius();
+        }
+
+        &:hover, &._active {
+            background-color: lighten($denim, 10%);
+            cursor: pointer;
+        }
+    }
+
+    h1 {
+        font-size: 2rem;
+
+        a {
+            text-decoration: none;
+            @include stroke(1, $steel);
+            color: $marigold;
+        }
+    }
+}
+
+a {
+    color: $steel;
+    text-decoration: none;
+
+    ._secondary {
+        color: $screen;
+        &:hover {
+            color: lighten($screen, 30%);
+        }
+    }
+
+    &:hover {
+        color: lighten($steel, 30%);
+    }
+}
+
+input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+body.ember-application > .ember-view {
+    height: 100%;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.application-container {
+    background-color: $screen;
+    height: 100%;
+
+    .application-container-inner {
+        height: calc(100% - 4rem);
+        @include linear-gradient(-160deg, rgba($steel, 0) 85%, rgba($steel, .4));
+        padding-top: 4rem;
+
+        &._hide-header {
+            padding-top: 0;
+            height: 100%;
+        }
+
+        ._main-padding {
+            padding: 2rem;
+        }
+    }
+}
+
+.page-container {
+    @include display(flex);
+    @include flex-direction(row);
+    height: 100%;
+}
+
+._sidebar-container {
+
+    @include display(flex);
+    @include flex-direction(column);
+    box-shadow: -3px 0 10px 0 rgba($steel, .25);
+
+    ._sidebar-toggle {
+        @include flex(0 0 3rem);
+        @include display(flex);
+        @include justify-content(space-between);
+        background-color: #fff;
+        border-bottom: 1px solid $screen;
+
+        ._toggle-option {
+            @include flex(1 1 auto);
+            cursor: pointer;
+            padding: 1rem;
+            color: #666;
+            text-align: center;
+
+            &._selected {
+                color: $marigold;
+            }
+
+            &:hover {
+                color: $steel;
+            }
+        }
+    }
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 25rem;
+    background-color: white; 
+    border-left: 1px solid $screen;
+    @include flex(1 0 25rem);
+
+}
+
+.game-container {
+    position: relative;
+    @include display(flex);
+    @include flex-direction(column);
+    @include flex(1 1 auto);
+    margin-right: 25rem;
+    height: 100%;
+}
+
+._center {
+    text-align: center;
+}
+
+._overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba($steel, .9);
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+
+    ._game-over-container {
+        padding: 3rem;
+        background-color: #fff;
+        border: 3px solid $marigold;
+        @include border-radius();
+
+        &._bid-notification {
+            font-size: 1.2rem;
+            text-align: center;
+
+            h4 {
+                color: $badge-green;
+                font-size: 1.6rem;
+            }
+
+            div {
+                margin-top: .5rem;
+
+                &:last-of-type {
+                    margin-top: 0;
+                    @include display(flex);
+                    @include align-items(center);
+                    @include justify-content(center);
+                }
+            }
+
+            ._bold {
+                font-size: 2.5rem;
+                font-weight: bold;
+                padding-right: .5rem;
+            }
+
+            img {
+                padding-left: .5rem;
+                width: 2rem;
+            }
+        }
+    }
+}

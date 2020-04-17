@@ -1,0 +1,145 @@
+._component-player-avatar, ._component-user-avatar {
+    @include display(flex);
+    width: 15rem;
+    border: 1px solid $denim;
+    background-color: #fff;
+    position: relative;
+    box-shadow: $box-shadow;
+    @include border-radius();
+    min-height: 2rem;
+
+    &._is-dealer {
+        border-width: 3px;
+
+        ._bidder-notifier {
+            left: 15.1rem;
+        }
+    }
+
+    &._is-player-pending {
+        @include shadow-pulse($marigold);
+    }
+
+    ._player-status {
+        position: absolute;
+        left: .25rem;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        width: .5rem;
+        height: .5rem;
+        @include border-radius(50%);
+        background-color: indianred;
+    }
+
+    &._is-active ._player-status {
+        background-color: lightgreen;
+    }
+
+    ._avatar {
+        @include flex(0 0 2rem);
+        width: 2rem;
+        height: 2rem;
+        background-size: cover;
+    }
+
+    ._dealer-notifier {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        padding: .1rem;
+        right: 15.1rem;
+        background-color: $steel;
+        color: #fff;
+        @include border-left-radius();
+        font-size: .6rem;
+        text-align: center;
+        padding: .7rem;
+        line-height: 1;
+    }
+
+
+    ._player-name {
+        @include flex(1 1 auto);
+        @include display(flex);
+        @include align-items(center);
+        @include justify-content(center);
+        font-size: .8rem;
+        position: relative;
+        padding: .5rem;
+        padding-left: 1rem;
+
+        ._is-me & {
+            padding-left: .5rem;
+
+            ._player-status {
+                display: none;
+            }
+
+            ._secondary {
+                text-align: right;
+            }
+        }
+
+        ._player-name-text {
+            @include ellipsis();
+            @include flex(1 1 auto);
+            text-align: left;
+        }
+
+        a {
+            @include flex(1 1 auto);
+        }
+
+        &._is-editing {
+            padding: .25rem;
+
+            ._player-name-text {
+                padding-right: .5rem;
+            }
+
+            .btn {
+                border: 1px solid #fff;
+            }
+        }
+    }
+
+    ._bidder-notifier {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 100%;
+        font-size: .9rem;
+        font-weight: bold;
+        text-align: center;
+        @include border-right-radius();
+        background-color: #fff;
+        color: $denim;
+        border: 1px solid $denim;
+        padding: .5rem;
+        z-index: 1;
+        line-height: 1;
+
+        > div {
+            white-space: nowrap;
+        }
+
+        &._owns-bid {
+            background-color: $badge-green;
+            color: #fff;
+        }
+    }
+}
+
+._component-player-avatar {
+    margin: 1rem;
+}
+
+._component-user-avatar {
+    width: 100%;
+
+    ._secondary {
+        text-align: right;
+    }
+}

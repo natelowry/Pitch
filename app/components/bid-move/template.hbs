@@ -1,0 +1,29 @@
+
+{{#if isMooning}}
+    <div class="_move-explainer">Are you sure?</div>
+    <div class="_move-explainer">This is the equivalent of betting 52 that you will get all 10 points.</div>
+
+    <div {{action 'moon'}} class="btn _btn-primary">Shoot the Moon</div>
+    
+    <div {{action 'toggleIsMoon'}} class="btn _btn-outline-white">Cancel</div>
+    
+{{else}}
+    <div class="_move-explainer">
+        {{if isForcedBid 'Everybody passed, you must bid!' 'Your Bid!'}}
+    </div>
+
+    <div class="form-input-wrap _center">
+        {{input type="text" class="_center" value=bidAmount}}
+    </div>
+
+    <div class="_move-note">
+        Minimum Bid: {{minBid}}
+    </div>
+
+    <div {{action 'bid'}} class="btn _btn-primary">Bid</div>
+    {{#unless isForcedBid}}
+        <div {{action 'pass'}} class="btn _btn-outline-white">Pass</div>
+    {{/unless}}
+
+    <div {{action 'toggleIsMoon'}} class="btn _btn-caution _btn-moon">&#9790;</div>
+{{/if}}

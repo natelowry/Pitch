@@ -1,0 +1,18 @@
+<div class="_avatar" style="background-image: url({{user.displayImageUrl}})">
+
+</div>
+<div class="_player-name">
+
+    <div class="_player-name-text">
+        {{#if isMe}}
+            You ({{user.displayName}})
+        {{else}}
+            {{user.displayName}}
+        {{/if}}
+    </div>
+
+    {{#if removeAction}}
+        <a href="#" class="_secondary" {{action 'remove'}}>Remove</a>
+    {{/if}}
+
+</div>

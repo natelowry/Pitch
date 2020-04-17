@@ -1,0 +1,16 @@
+﻿form {
+    input.error {
+        background-color: lighten($red, 60%);
+    }
+
+    small.error {
+        color: $red;
+        font-size: .8rem;
+    }
+
+    input {
+        padding: .5rem;
+        @include border-radius();
+        border: 1px solid $screen;
+    }
+}

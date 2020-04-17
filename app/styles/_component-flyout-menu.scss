@@ -1,0 +1,9 @@
+﻿._component-flyout-menu {
+    display: none;
+    @include transition-property(display);
+    @include transition-duration(1.0s);
+
+    &._show {
+        display: block;
+    }
+}

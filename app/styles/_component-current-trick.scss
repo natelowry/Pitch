@@ -1,0 +1,85 @@
+
+._component-current-trick {
+    @include flex(0 1 15em);
+    text-align: center;
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+    position: relative;
+
+    img {
+        width: 100%;
+    }
+
+    ._trick-card {
+        position: absolute;
+        width: 60px;
+        height: 88px;
+
+        &._trick-burned-card-top {
+            top: -1.5rem;
+            left: -1.2rem;
+            right: 0;
+            margin: 0 auto;
+            @include slide-down();
+        }
+
+        &._trick-card-top {
+            top: -1.5rem;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            @include slide-down();
+        }
+
+        &._trick-burned-card-left {
+            top: 0;
+            bottom: 0;
+            left: -2.7rem;
+            margin: auto 0;
+            @include slide-right();
+        }
+
+        &._trick-card-left {
+            top: 0;
+            bottom: 0;
+            left: -1.5rem;
+            margin: auto 0;
+            @include slide-right();
+        }
+        
+        &._trick-burned-card-right {
+            top: 0;
+            bottom: 0;
+            right: -2.3rem;
+            margin: auto 0;
+            @include slide-left();
+        }
+
+        &._trick-card-right {
+            top: 0;
+            bottom: 0;
+            right: -1.5rem;
+            margin: auto 0;
+            @include slide-left();
+        }
+        
+        &._trick-burned-card-bottom {
+            bottom: -1.5rem;
+            left: -1.2rem;
+            right: 0;
+            margin: 0 auto;
+            @include slide-up();
+        }
+
+        &._trick-card-bottom {
+            bottom: -1.5rem;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            @include slide-up();
+        }
+
+    }
+
+}

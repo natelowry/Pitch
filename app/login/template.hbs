@@ -1,0 +1,13 @@
+{{outlet}}
+
+<h1>
+    You are currently not logged in.
+</h1>
+
+{{#if isGoogleLoginError}}
+    <span class="g-login-error">
+        Login was not successful :(
+    </span>
+{{/if}}
+
+{{google-login-button}}

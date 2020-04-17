@@ -1,0 +1,67 @@
+
+
+<div class="page-container">
+    <div class="game-container">
+        {{#if model.moveIsGameOver}}
+            <div class="_overlay">
+                <div class="_game-over-container">
+                    {{#if model.forfeitedBy}}
+                        <h1>Game forfeited by {{model.forfeitedBy.displayName}}</h1>
+                    {{else}}
+                        <h1>{{model.winningTeam.name}} Wins!</h1>
+                    {{/if}}
+                </div>
+            </div>
+        {{else if model.moveIsDiscard}}
+            {{#unless currentUserPlayerIsBidder}}
+                {{#self-dismiss class="_overlay"}}
+                    <div class="_game-over-container _bid-notification">
+                        <div>{{model.currentDeal.bidder.displayName}}</div> 
+                        <div>{{#if model.currentDeal.bidIsMoon}}<h4>Shot the Moon</h4>{{else}}bid{{/if}}</div>
+                        <div>
+                            <span class="_bold">{{#unless model.currentDeal.bidIsMoon}}{{model.currentDeal.currentBid}}{{/unless}}</span>
+                            <span>in</span>
+                            <img src="/Content/Images/Svg/Suit{{model.currentDeal.trump}}.svg" />
+                        </div>
+                    </div>                
+                {{/self-dismiss}}
+            {{/unless}}
+        {{else if isRpcExecuting}}
+            <div class="_overlay">{{load-spinner isXLarge=true}}{{load-spinner isXLarge=true}}{{load-spinner isXLarge=true}}</div>
+        {{/if}}
+        
+        {{status-board gameState=model currentUserPlayer=currentUserPlayer}}
+
+        <div class="_component-table">
+            <div class="_player-row _one-player-row">
+                {{player-seat player=seat1 gameState=model isActive=seat1Active}}
+            </div>
+            <div class="_player-row _two-player-row">
+                {{player-seat player=seat2 gameState=model isActive=seat2Active}}
+
+                {{current-trick gameState=model seat1=seat1 seat2=seat2 seat3=seat3 seat4=currentUserPlayer}}
+
+                {{player-seat player=seat3 gameState=model isActive=seat3Active}}
+            </div>
+            <div class="_player-row _one-player-row">
+                {{player-seat player=currentUserPlayer currentUserPlayer=currentUserPlayer gameState=model}}
+            </div>
+        </div>
+    </div>
+
+    <div class="_sidebar-container">
+        <div class="_sidebar-toggle">
+            <div {{action 'setToggleOption' 1}} class="_toggle-option {{if isChat '_selected'}}">Chat</div>
+            <div {{action 'setToggleOption' 2}} class="_toggle-option {{if isVideo '_selected'}}">Video</div>
+            <div {{action 'setToggleOption' 3}} class="_toggle-option {{if isVideoChat '_selected'}}">Chat + Video</div>
+        </div>
+        {{#if isChat}}
+            {{chat-box messages=messages currentUserPlayer=currentUserPlayer}}
+        {{else if isVideo}}
+            {{appear-in roomId=model.playerA.id}}
+        {{else if isVideoChat}}
+            {{appear-in roomId=model.playerA.id}}
+            {{chat-box class="_is-video-chat" messages=messages currentUserPlayer=currentUserPlayer}}
+        {{/if}}
+    </div>
+</div>

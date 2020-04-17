@@ -1,0 +1,15 @@
+{{player-avatar player=player currentUserPlayer=currentUserPlayer bidder=bidder dealer=dealer bid=bid playerPending=gameState.playerPending isActive=isActive deal=gameState.currentDeal}}
+
+<div class="_other-player-hand">
+    {{#unless player.isFolded}}
+        <ul class="_player-hand">
+            {{#each player.orderedHand as |card|}}
+            <li>
+                {{card-face card=card isPlay=isPlay trump=gameState.currentDeal.trump isMe=isMe avoidCard=currentCard isCurrentUserPlayerPending=isCurrentUserPlayerPending}}
+            </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>Folded</p>
+    {{/unless}}
+</div>

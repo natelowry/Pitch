@@ -1,0 +1,30 @@
+
+{{#if seat1Play.burnedCard}}
+    {{card-face card=seat1Play.burnedCard class="_trick-card _trick-burned-card-top"}}
+{{/if}}
+{{#if seat1Play.playedCard}}
+    {{card-face card=seat1Play.playedCard class="_trick-card _trick-card-top"}}
+{{/if}}
+
+{{#if seat2Play.burnedCard}}
+    {{card-face card=seat2Play.burnedCard class="_trick-card _trick-burned-card-left"}}
+{{/if}}
+{{#if seat2Play.playedCard}}
+    {{card-face card=seat2Play.playedCard class="_trick-card _trick-card-left"}}
+{{/if}}
+
+{{#if seat3Play.burnedCard}}
+    {{card-face card=seat3Play.burnedCard class="_trick-card _trick-burned-card-right"}}
+{{/if}}
+{{#if seat3Play.playedCard}}
+    {{card-face card=seat3Play.playedCard class="_trick-card _trick-card-right"}}
+{{/if}}
+
+{{#if seat4Play.burnedCard}}
+    {{card-face card=seat4Play.burnedCard class="_trick-card _trick-burned-card-bottom"}}
+{{/if}}
+{{#if seat4Play.playedCard}}
+    {{card-face card=seat4Play.playedCard class="_trick-card _trick-card-bottom"}}
+{{/if}}
+
+<img src="/Content/Images/pitch-logo.png" />

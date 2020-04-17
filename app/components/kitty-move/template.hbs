@@ -1,0 +1,20 @@
+﻿
+<div class="_move-explainer">Kitty Card</div>
+
+<div class="_kitty-card">
+    {{card-face card=displayCard}}
+</div>
+
+{{#if hasCard}}
+    {{#if cardIsTrump}}
+        <div {{action 'takeKittyCard'}} class="btn _btn-primary">Take Card</div>
+    {{else}}
+        <div {{action 'discardKittyCard'}} class="btn _btn-outline-white">Discard</div>
+    {{/if}}
+{{else}}
+    <div class="_move-note">{{deckCount}} {{pluralize deckCount.Length 'card'}} left</div>
+    <div {{action 'seeKittyCard'}} class="btn _btn-primary">See Card</div>
+    <div {{action 'passDeck'}} class="btn _btn-outline-white">Pass Deck</div>
+{{/if}}
+
+

@@ -1,0 +1,21 @@
+._component-table {
+    @include display(flex);
+    @include flex-direction(column);
+    @include justify-content(space-between);
+    @include flex(1 1 auto);
+    position: relative;
+    @include linear-gradient(-160deg, rgba($steel, 0) 50%, rgba($steel, .5));
+
+    ._player-row {
+        @include display(flex);
+        @include flex(1 0 4rem);
+
+        &._one-player-row {
+            @include justify-content(center);
+        }
+
+        &._two-player-row {
+            @include justify-content(space-between);
+        }
+    }
+}

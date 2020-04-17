@@ -1,0 +1,9 @@
+<div>
+    <img src="/Content/Images/Svg/{{card.svgName}}.svg" class="{{if isMuted '_is-muted'}}" />
+
+    {{#if hasAction}}
+        {{#unless isAvoidOrNotTrump}}
+            <div class="btn _btn-outline-white _play-card" {{action 'play'}}>{{if avoidCard 'Burn' 'Play'}}</div>
+        {{/unless}}
+    {{/if}}
+</div>

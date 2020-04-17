@@ -1,0 +1,60 @@
+<div class="_my-games-flow">
+    <div class="_page-title">My Games</div>
+
+    <div class="_my-games-container">
+        <div class="_my-games">
+            <div class="_my-games-header">
+                <a href="#" class="{{if statusIsActive '_active'}}" {{action 'setStatus' 1}}>Active</a>
+                <a href="#" class="{{if statusIsActive '' '_active'}}" {{action 'setStatus' 2}}>Finished</a>
+            </div>
+            <div class="_my-games-list">
+                {{#if displayGames.length}}
+                    <ul>
+                        {{#each displayGames as |game|}}
+                            {{#link-to 'games.game' game tagName="li"}}
+                                {{#if game.isRpcExecuting}}
+                                    <h1>Updating...</h1>
+                                {{else}}
+                                    <div class="_my-games-row">
+                                        <div class="_my-games-row-item">
+                                            <div class="_game-title"><strong>{{game.teamA.name}}</strong> {{game.teamA.score}}</div>
+                                            <div class="_game-members">{{#each game.teamAPlayers as |player|}}<div class="_game-member">{{player.displayName}}</div>{{/each}}</div>
+                                        </div>
+                                        <div class="_my-games-row-item">
+                                            <div class="_game-title"><strong>{{game.teamB.name}}</strong> {{game.teamB.score}}</div>
+                                            <div class="_game-members">{{#each game.teamBPlayers as |player|}}<div class="_game-member">{{player.displayName}}</div>{{/each}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="_my-games-row">
+                                        <div>
+                                            {{#link-to 'games.game.play' game class="btn _btn-tiny _btn-primary"}}Enter Game{{/link-to}}{{#link-to 'games.game.index' game class="btn _btn-tiny _btn-secondary"}}Details{{/link-to}}{{#unless game.moveIsGameOver}}<a href="#" {{action 'forfeitGame' game.id bubbles=false}} class="btn _btn-tiny _btn-caution">Forfeit Game</a>{{/unless}}
+                                        </div>
+                                    </div>
+                                    {{#if game.createdOn}}
+                                        <div class="_my-games-row _full">
+                                            {{#if game.createdOn}}
+                                                <div class="_my-games-row-item"><strong>Started:</strong> {{moment-from-now game.createdOn}}</div>
+                                            {{/if}}
+                                            {{#if game.updatedOn}}
+                                                <div class="_my-games-row-item"><strong>Last Updated:</strong> {{moment-from-now game.updatedOn}}</div>
+                                            {{/if}}
+                                        </div>
+                                    {{/if}}
+
+                                {{/if}}
+                            {{/link-to}}
+                        {{/each}}
+                    </ul>
+                {{else if statusIsActive}}
+                    <h1>You don't have any active games {{#link-to 'games.create'}}Start a new game{{/link-to}}</h1>
+                {{else}}
+                    <h1>You don't have any finished games</h1>
+                {{/if}}
+            </div>
+        </div>
+        <div class="_start-new-game">
+            {{#link-to 'games.create' class="btn _btn-primary _btn-large"}}Start New Game{{/link-to}}
+        </div>
+    </div>
+</div>
+

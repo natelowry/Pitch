@@ -1,0 +1,86 @@
+﻿@mixin button-base() {
+    @include border-radius(3px);
+    display: block;
+    cursor: pointer;
+    padding: .25rem;
+    font-size: 1rem;
+}
+
+@mixin button-background($bgColor, $color: #fff) {
+    background-color: $bgColor;
+    color: $color;
+    text-align: center;
+
+    &:hover {
+        background-color: darken($bgColor, 10%);
+        color: darken($color, 10%);
+    }
+}
+
+.btn {
+    @include button-base();
+    text-decoration: none;
+    @include transition(color .3s ease);
+
+    &._btn-small {
+        font-size: .8rem;
+    }
+
+    &._btn-tiny {
+        font-size: .6rem;
+    }
+
+    &._btn-huge {
+        font-size: 1.6rem;
+        padding: 1rem;
+    }
+
+    &._btn-large {
+        font-size: 1.2rem;
+        padding: .5rem;
+    }
+
+    &._btn-primary {
+        @include button-background($marigold);
+
+        &._outline {
+            @include button-background(transparent, $marigold);
+            border: 1px solid $marigold;
+        }
+    }
+
+    &._btn-secondary {
+        @include button-background($screen);
+
+        &._outline {
+            @include button-background(transparent, $screen);
+            border: 1px solid $screen;
+        }
+
+    }
+
+    &._btn-navigation {
+        @include button-background($denim);
+
+        &._outline {
+            @include button-background(transparent, $denim);
+            border: 1px solid $denim;
+        }
+
+    }
+
+    &._btn-outline-white {
+        @include button-background(transparent, #fff);
+        border: 1px solid #fff;
+    }
+
+    &._btn-caution {
+        @include button-background($red, #fff);
+    }
+
+    &._disabled {
+        color: $screen;
+    }
+
+}
+

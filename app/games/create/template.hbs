@@ -1,0 +1,70 @@
+<div class="_game-details _create">
+    {{#game-create class="_game-information" tagName='form' saveAction="createGame"}}
+        <div class="_score-card">
+            <div class="_team-container">
+                <div class="_create-team-name">
+                    <label>Team 1 Name:</label> {{input type="text" value=team1Name name="team1Name" placeholder="Enter your team name"}}
+                </div>
+                <div class="_create-team-member"><label>Player A</label> {{user-avatar user=currentUser currentUser=currentUser}}</div>
+                {{#if playerB}}
+                    <div class="_create-team-member"><label>Player B</label>
+                        {{user-avatar user=playerB currentUser=currentUser removeAction="removePlayerB"}}
+                    </div>
+                {{else}}
+                    {{#auto-complete class="_create-team-member" inputName="playerBEmail" filterAction=(action 'filterFriends') label="Player B" value=playerBEmail placeholder="Type Friend's Name or Email..." as |friends|}}
+                        {{#if friends}}
+                            <ul>
+                                {{#each friends as |friend|}}
+                                    <li {{action 'setPlayer' 'playerB' friend}} title="{{friend.displayName}}">
+                                        <img src="{{friend.displayImageUrl}}" />&nbsp;{{friend.displayName}}
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    {{/auto-complete}}    
+                {{/if}}        
+            </div>
+            <span class="_vs">Vs</span>
+            <div class="_team-container">
+                <div class="_create-team-name">
+                    <label>Team 2 Name:</label> {{input type="text" value=team2Name name="team2Name" placeholder="Enter your team name"}}
+                </div>
+                {{#if playerC}}
+                    <div class="_create-team-member"><label>Player A</label>
+                        {{user-avatar user=playerC currentUser=currentUser removeAction="removePlayerC"}}
+                    </div>
+                {{else}}
+                    {{#auto-complete class="_create-team-member" inputName="playerCEmail" filterAction=(action 'filterFriends') label="Player A" value=playerCEmail placeholder="Type Friend's Name or Email..." as |friends|}}
+                        {{#if friends}}
+                            <ul>
+                                {{#each friends as |friend|}}
+                                    <li {{action 'setPlayer' 'playerC' friend}} title="{{friend.displayName}}">
+                                        <img src="{{friend.displayImageUrl}}" />&nbsp;{{friend.displayName}}
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    {{/auto-complete}}
+                {{/if}}
+                {{#if playerD}}
+                    <div class="_create-team-member">
+                        <label>Player B</label>
+                        {{user-avatar user=playerD currentUser=currentUser removeAction="removePlayerD"}}
+                    </div>
+                {{else}}
+                    {{#auto-complete class="_create-team-member" inputName="playerDEmail" filterAction=(action 'filterFriends') label="Player B" value=playerDEmail placeholder="Type Friend's Name or Email..." as |friends|}}
+                        {{#if friends}}
+                            <ul>
+                                {{#each friends as |friend|}}
+                                <li {{action 'setPlayer' 'playerD' friend}} title="{{friend.displayName}}">
+                                    <img src="{{friend.displayImageUrl}}" />&nbsp;{{friend.displayName}}
+                                </li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    {{/auto-complete}}
+                {{/if}}
+            </div>
+        </div>
+    {{/game-create}}
+</div>

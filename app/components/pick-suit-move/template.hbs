@@ -1,0 +1,18 @@
+<div class="_move-explainer">Pick Your Suit</div>
+
+<div class="_suit-selector">
+    <div>
+        <div class="btn _btn-secondary {{if isSpades '_selected'}}" {{action 'selectSuit' 2}}><img src="/Content/Images/Svg/Suit2.svg" /></div>
+    </div>
+    <div>
+        <div class="btn _btn-secondary {{if isHearts '_selected'}}" {{action 'selectSuit' 3}}><img src="/Content/Images/Svg/Suit3.svg" /></div>
+    </div>
+    <div>
+        <div class="btn _btn-secondary {{if isClubs '_selected'}}" {{action 'selectSuit' 1}}><img src="/Content/Images/Svg/Suit1.svg" /></div>
+    </div>
+    <div>
+        <div class="btn _btn-secondary {{if isDiamonds '_selected'}}" {{action 'selectSuit' 0}}><img src="/Content/Images/Svg/Suit0.svg" /></div>
+    </div>
+</div>
+
+<div class="btn _btn-primary {{unless selectedSuit '_disabled'}}" {{action 'pickSuit'}}>Select Suit</div>

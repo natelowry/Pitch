@@ -1,0 +1,25 @@
+
+<div class="_game-details">
+    <div class="_game-information">
+        <div class="_score-card">
+            <div class="_team-container">
+                <h1>{{model.teamA.name}}</h1>
+                {{#each model.teamAPlayers as |player|}}
+                    {{player-avatar player=player}}
+                {{/each}}
+                <p>Score: {{model.teamA.score}}</p>
+            </div>
+            <span class="_vs">Vs</span>
+            <div class="_team-container">
+                <h1>{{model.teamB.name}}</h1>
+                {{#each model.teamBPlayers as |player|}}
+                    {{player-avatar player=player}}
+                {{/each}}
+                <p>Score: {{model.teamB.score}}</p>
+            </div>
+        </div>
+        <div class="_game-information-footer">
+            {{#link-to 'games.game.play' model class="btn _btn-primary _btn-huge"}}Enter Game{{/link-to}}
+        </div>
+    </div>
+</div>

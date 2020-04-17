@@ -1,0 +1,153 @@
+﻿@mixin border-radius($radius: $default-radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+@mixin border-top-radius($radius: $default-radius) {
+    -webkit-border-top-right-radius: $radius;
+    border-top-right-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-top-left-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-right-radius($radius: $default-radius) {
+    -webkit-border-bottom-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+    -webkit-border-top-right-radius: $radius;
+    border-top-right-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-bottom-radius($radius: $default-radius) {
+    -webkit-border-bottom-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+    -webkit-border-bottom-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+    background-clip: padding-box;
+}
+
+@mixin border-left-radius($radius: $default-radius) {
+    -webkit-border-bottom-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+    -webkit-border-top-left-radius: $radius;
+    border-top-left-radius: $radius;
+    background-clip: padding-box;
+}
+
+
+@mixin shadow-pulse($color) {
+    @include keyframes(shadowPulse) {
+        from {
+            box-shadow: 0px 0px 2px 0px rgba($color,1);
+        }
+        to {
+            box-shadow: 0px 0px 8px 2px rgba($color,1);
+        }
+    }
+
+    @include animation(shadowPulse 1.0s alternate infinite)
+}
+
+@mixin reminder-shake() {
+    animation-delay: 10s;
+    @include animation(shake 10s cubic-bezier(.36,.07,.19,.97) both infinite);
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@mixin slide-down() {
+    @include animation(slide-down 1s 1);
+}
+
+@mixin slide-right() {
+    @include animation(slide-right 1s 1);
+}
+
+@mixin slide-up() {
+    @include animation(slide-up 1s 1);
+}
+
+@mixin slide-left() {
+    @include animation(slide-left 1s 1);
+}
+
+@include keyframes(slide-down) {
+    from {
+        transform: translateY(-3rem);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@include keyframes(slide-right) {
+    from {
+        transform: translateX(-3rem);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@include keyframes(slide-up) {
+    from {
+        transform: translateY(3rem);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@include keyframes(slide-left) {
+    from {
+        transform: translateX(3rem);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@include keyframes(shake) {
+    .5%, 4.5% {
+    transform: translate3d(-1px, 0, 0);
+    }
+  
+    1%, 4% {
+    transform: translate3d(2px, 0, 0);
+    }
+
+    1.5%, 2.5%, 3.5% {
+    transform: translate3d(-4px, 0, 0);
+    }
+
+    2%, 3% {
+    transform: translate3d(4px, 0, 0);
+    }
+}
+
+
+
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {List}            - text-shadow list
+@function stroke($stroke, $color) {
+  $shadow: ();
+  $from: $stroke*-1;
+  @for $i from $from through $stroke {
+   @for $j from $from through $stroke {
+      $shadow: append($shadow, $i*1px $j*1px 0 $color, comma);
+    }
+  }
+  @return $shadow;
+}
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {Style}           - text-shadow
+@mixin stroke($stroke, $color) {
+  text-shadow: stroke($stroke, $color);
+}

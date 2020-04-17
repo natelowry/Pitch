@@ -1,0 +1,66 @@
+._component-player-seat {
+    @include display(flex);
+    @include flex(0 1 25rem);
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
+    width: 25rem;
+    z-index: $z-2;
+
+    ._other-player-hand {
+        text-align: center;
+    }
+
+    &._is-me {
+
+        @include flex(1 1 auto);
+
+        ul._player-hand li {
+            width: 60px;
+            margin-right: .5rem;
+        }
+
+        ._is-muted {
+            opacity: .5;
+        }
+    }
+
+    ._component-card-face {
+
+        img {
+            width: 100%;
+        }
+
+        > div {
+            position: relative;
+
+            ._play-card {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                left: 0;
+                right: 0;
+                
+                background-color: rgba($steel, .6);
+                width: 2.5rem;
+                height: 1.2rem;
+
+                &:hover {
+                    color: $marigold;
+                    border-color: $marigold;
+                }
+            }
+        }
+    }
+
+
+    ul._player-hand li {
+ 
+        display: inline-block; 
+        width: 30px;
+        margin-right: -25px;
+
+    }
+
+}

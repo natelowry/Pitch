@@ -1,0 +1,43 @@
+{{#if deal}}
+    {{#if isBidder}}
+        <div class="_bidder-notifier _owns-bid">
+            <div>Bid:&nbsp;{{deal.currentBid}}</div>
+        </div>
+    {{/if}}
+{{else}}
+    {{#if showBid}}
+        <div class="_bidder-notifier {{if isBidder '_owns-bid'}}">
+            <div>{{#if player.bid}}Bid:&nbsp;{{player.bid}}{{else}}Pass{{/if}}</div>
+        </div>
+    {{/if}}
+{{/if}}
+
+{{#if isDealer}}
+    <div class="_dealer-notifier">Dealer</div>
+{{/if}}
+
+<div class="_avatar" style="background-image: url({{player.user.displayImageUrl}})">
+
+</div>
+<div class="_player-name {{if isEditing '_is-editing'}}">
+    <div class="_player-status"></div>
+
+    <div class="_player-name-text">
+        {{#if isMe}}
+            {{#if isEditing}}
+                {{input type="text" value=newName}} 
+            {{else}}
+                You ({{player.displayName}})
+            {{/if}}
+        {{else}}
+            {{player.displayName}}
+        {{/if}}
+    </div>
+    {{#if isMe}}
+        {{#if isEditing}}
+            <a href="#" {{action 'sendName'}} class="btn _btn-primary _btn-small">Save</a>
+        {{else}}
+            <a href="#" class="_secondary" {{action 'toggleIsEditing'}}>edit</a>
+        {{/if}}
+    {{/if}}
+</div>

@@ -1,0 +1,9 @@
+{{#if label}}
+    <label>{{label}}</label>
+{{/if}}
+
+{{input type="text" name=inputName value=value key-up=(action 'handleFilterResults') placeholder=placeholder autocomplete="off"}}
+
+{{#if showResults}}
+    {{yield results}}
+{{/if}}

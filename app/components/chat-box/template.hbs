@@ -1,0 +1,17 @@
+<div class="_discussion">
+    <ul>
+        {{#each messages as |message|}}
+            {{chat-message message=message currentUserPlayer=currentUserPlayer}}
+        {{/each}}
+    </ul>
+</div>
+<div class="_add-message">
+    <div class="_message-input">
+        {{input type="text" value=currentMessage enter="sendMessage"}}
+    </div>
+    <div class="_message-submit">
+        <div class="btn _btn-primary" {{action 'sendMessage'}}>+</div>
+    </div>
+</div>
+
+

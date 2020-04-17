@@ -1,0 +1,47 @@
+<div class="_leave-game">
+    {{#link-to 'games.index' class="btn _btn-secondary"}}&lt; Leave Game{{/link-to}}
+</div>
+<div class="_score-container">
+    <div class="_team-score"><div class="_team-name" title="{{gameState.teamA.name}}">{{gameState.teamA.name}}</div><div class="_score">{{gameState.teamA.score}}</div></div>
+    <div class="_team-score"><div class="_team-name" title="{{gameState.teamB.name}}">{{gameState.teamB.name}}</div><div class="_score">{{gameState.teamB.score}}</div></div>
+    {{#if bidExists}}
+        <div class="_deal-status {{if teamAIsBidder '_team-a' '_team-b'}}">
+            <div class="_deal-status-item">
+                Bid:&nbsp;{{#if gameState.currentDeal.bidIsMoon}}Moon!{{else}}{{gameState.currentDeal.currentBid}}{{/if}}
+            </div>
+            <div class="_deal-status-item">
+                Suit:&nbsp;<img src="{{cardImageUrl}}" />
+            </div>
+        </div>
+    {{/if}}
+</div>
+
+<div class="_move-container">
+    {{#if currentUserHasAction}}
+        <div class="_my-move">
+            {{#if gameState.moveIsDeal}}
+                {{#general-move moveAction="deal" moveText="Deal"}}Your Deal!{{/general-move}}
+            {{else if gameState.moveIsBid}}
+                {{bid-move  currentBid=gameState.currentBid isForcedBid=isForcedBid}}
+            {{else if gameState.moveIsDealBack}}
+                {{#general-move moveAction="dealback" moveText="Deal Back"}}Time to Deal Back!{{/general-move}}
+            {{else if gameState.moveIsKittyCard}}
+                {{kitty-move card=gameState.kittyCard trump=gameState.currentDeal.trump deckCount=gameState.deckCount}}
+            {{else if gameState.moveIsPickSuit}}
+                {{pick-suit-move}}
+            {{else if gameState.moveIsDiscard}}
+                {{#general-move moveAction='discard' moveText="Discard"}}Time to Discard!{{/general-move}}
+            {{else if gameState.moveIsPlay}}
+                <div class="_move-explainer">Your Move! Pick a Card Below.</div>
+            {{else if gameState.moveIsClear}}
+                {{#general-move moveAction='clear' moveText="Clear"}}Somebody Clear the Cards!{{/general-move}}
+            {{/if}}
+        </div>
+    {{else}}
+        {{#if gameState.moveIsGameOver}}
+            Game Over!
+        {{else}}
+            Waiting for {{#if gameState.playerPending}}{{shorten gameState.playerPending.displayName 24}}{{else}}everybody else{{/if}} to <br /><span class="_others-move">{{move-name gameState.currentMove}}</span>
+        {{/if}}
+    {{/if}}
+</div>

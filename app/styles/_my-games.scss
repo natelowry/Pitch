@@ -1,0 +1,118 @@
+
+._my-games-flow {
+    @include display(flex);
+    @include flex-direction(column);
+    @include justify-content(space-between);
+    @include align-items(center);
+    overflow: hidden;
+    height: 100%;
+}
+
+._page-title {
+    color: $denim;
+    font-size: 2.5rem;
+    @include flex(0 0 3.4rem);
+    min-width: 53rem;
+    padding: .5rem;
+}
+
+
+._my-games-container {
+    @include display(flex);
+    @include justify-content(center);
+    @include flex(1 1 auto);
+    min-width: 53rem;
+
+    ._my-games {
+        @include flex(0 1 40rem);
+        background-color: $denim;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        @include border-radius();
+
+
+        ._my-games-list {
+            max-height: calc(100% - 3.5rem);
+            overflow-y: auto;
+            border-bottom: 1px solid $screen;
+            background-color: #fff;
+        }
+
+        ._my-games-row {
+            @include display(flex);
+            @include justify-content(flex-start);
+
+            &._full {
+                @include flex(0 0 100%);
+                margin-top: .5rem;
+                font-size: .8rem;
+                
+                strong {
+                    font-weight: bold;
+                }
+            }
+
+            ._my-games-row-item {
+                margin-right: .5rem;
+                width: 10rem;
+
+                ._game-title {
+                    font-size: .8rem;
+
+                    strong {
+                        font-weight: bold;
+                    }
+                }
+
+                ._game-member {
+                    font-size: .6rem;
+                    @include ellipsis();
+                    display: block;
+                }
+            }
+
+            a {
+                display: inline-block;
+                margin-left: .5rem;
+                font-size: .8rem;
+            }
+        }
+
+        li {
+            padding: 1rem;
+            cursor: pointer;
+            @include display(flex);
+            @include justify-content(space-between);
+            @include align-items(center);
+            @include flex-wrap(wrap);
+            
+            &:not(:last-of-type) {
+                border-bottom: 1px solid $screen;
+            }
+        }
+
+        ._my-games-header  {
+            border-bottom: 1px solid $screen;
+            height: 3.5rem;
+
+            a {
+                font-size: 1.2rem;
+                padding: 1rem;
+                color: $screen;
+                display: inline-block;
+
+                &:hover {
+                    color: $steel;
+                }
+
+                &._active {
+                    color: $marigold;
+                }
+            }
+        }
+    }
+    ._start-new-game {
+        @include flex(0 0 13rem);
+        padding: 0 1rem;
+    }
+}

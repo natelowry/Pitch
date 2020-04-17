@@ -1,0 +1,167 @@
+._component-status-board {
+    background-color: $denim;
+    padding: .5rem;
+
+    @include display(flex);
+    @include justify-content(space-between);
+    font-size: .8rem;
+    @include align-items(center);
+    z-index: $z-3;
+
+    ._leave-game {
+        @include flex(0 0 8rem);
+        z-index: 3;
+    }
+
+    ._score-container {
+        position: absolute;
+        top: 0;
+        background-color: white;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        padding: .25rem;
+        width: 11rem;
+        text-align: center;
+        border: 3px solid $denim;
+        color: $denim;
+        @include border-bottom-radius(5px);        
+        @include display(flex);
+        @include align-items(center);
+
+
+        ._team-score {
+            @include flex(1 1 50%);
+            text-align: center;
+
+            ._team-name {
+                font-weight: bold;
+                font-size: .8rem;
+                @include ellipsis();
+            }
+
+            ._score {
+                font-size: 1.2rem;
+            }
+        }
+
+        ._deal-status {
+            position: absolute;            
+            padding: .25rem;
+            border: 3px solid $denim;            
+            background-color: #fff;
+            font-weight: bold;
+            text-align: left;
+            @include display(flex);
+            @include flex-direction(column);
+
+            &._team-a {
+                @include border-left-radius(5px);
+                right: 100%;
+            }
+
+            &._team-b {
+                left: 100%;
+                @include border-right-radius(5px);
+            }
+
+            ._deal-status-item {
+                white-space: nowrap;
+                         
+                img {
+                    width: .6rem;
+                }
+            }
+        }
+
+    }
+
+    ._current-move-container {
+        @include flex(0 1 15rem);
+        width: 15rem;
+    }
+
+    ._move-container {
+        @include flex(0 1 18rem);
+        color: #fff;
+        position: relative;
+        min-height: 1rem;
+        text-align: center;
+    }
+
+    ._others-move {
+        color: $marigold;
+    }
+
+    ._my-move {
+        top: -.25rem;
+        position: absolute;
+        left: 0;
+        right: 0;
+        @include border-radius();
+        padding: .5rem;
+        border: 2px solid $marigold;
+        background-color: $denim;
+        z-index: $z-4;
+        @include reminder-shake();
+
+        input {
+            width: 2.5rem;
+            padding: .5rem;
+            font-size: 1rem;
+        }
+
+        div {
+            &:not(.ember-view) {
+                margin-bottom: .5rem;
+            }
+        }
+
+        ._move-explainer {
+            font-size: 1rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        ._move-note {
+            font-size: .6rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        ._btn-moon {
+            display: inline-block;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        ._suit-selector {
+            @include display(flex);
+            @include justify-content(space-between);
+            @include align-items(center);
+
+            > div {
+                @include flex(0 1 3rem);
+
+                img {
+                    width: 100%;
+                }
+
+                ._selected {
+                    border: 1px solid $marigold;
+                    background-color: #fff;
+                }
+            }
+        }
+
+        ._kitty-card {
+            width: 50px;
+            margin: 0 auto;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+}
