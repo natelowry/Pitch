@@ -8,16 +8,11 @@ A short introduction of this app could easily go here.
 You will need the following things properly installed on your computer.
 
 * [Git](https://git-scm.com/)
-<<<<<<< HEAD:Pitch.WebApp/Scripts/apps/pitch/README.md
-* [Node.js](https://nodejs.org/) (with NPM)
 * [Bower](https://bower.io/)
-* [Ember CLI](https://ember-cli.com/)
 * [PhantomJS](http://phantomjs.org/)
-=======
 * [Node.js](https://nodejs.org/) (with npm)
 * [Ember CLI](https://ember-cli.com/)
 * [Google Chrome](https://google.com/chrome/)
->>>>>>> b3a3165... v2.6.1...v3.0.4:README.md
 
 ## Installation
 
@@ -56,11 +51,7 @@ Specify what it takes to deploy your app.
 
 ## Further Reading / Useful Links
 
-<<<<<<< HEAD:Pitch.WebApp/Scripts/apps/pitch/README.md
 * [ember.js](http://emberjs.com/)
-=======
-* [ember.js](https://emberjs.com/)
->>>>>>> b3a3165... v2.6.1...v3.0.4:README.md
 * [ember-cli](https://ember-cli.com/)
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
